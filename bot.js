@@ -58,7 +58,7 @@ client.on("message", async message => {
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-  message.channel.send("command list:\n X:say <msg> \n X:hug <target> \n X:snuggle <target> \n X:cuddle <target> \n X:wave <target> \n X:cheer <target>\n X:laugh \n" );
+  message.channel.send("command list:\n X:list (commands) \n X:say <msg> \n X:hug <target> \n X:snuggle <target> \n X:cuddle <target> \n X:wave <target> \n X:cheer <target> \n X:laugh <target> \n" );
   }
   if(command === "say") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 

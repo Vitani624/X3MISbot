@@ -60,9 +60,56 @@ client.on("message", async message => {
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-    message.channel.send(sayMessage);
+  message.channel.send(message.author + "*says* \"" + sayMessage + "\"");
   }
-  
+   if(command === "hug") {
+    // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
+    // To get the "message" itself we join the `args` back into a string with spaces: 
+    // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
+    message.delete().catch(O_o=>{}); 
+    // And we get the bot to say the thing: 
+  message.channel.send(message.author + "*hugs* " + args[1]);
+  }
+     if(command === "snuggle") {
+    // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
+    // To get the "message" itself we join the `args` back into a string with spaces: 
+    // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
+    message.delete().catch(O_o=>{}); 
+    // And we get the bot to say the thing: 
+  message.channel.send(message.author + "*snuggles* " + args[1]);
+  }
+     if(command === "cuddle") {
+    // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
+    // To get the "message" itself we join the `args` back into a string with spaces: 
+    // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
+    message.delete().catch(O_o=>{}); 
+    // And we get the bot to say the thing: 
+  message.channel.send(message.author + "*cuddles* " + args[1]);
+  }
+     if(command === "wave") {
+    // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
+    // To get the "message" itself we join the `args` back into a string with spaces: 
+    // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
+    message.delete().catch(O_o=>{}); 
+    // And we get the bot to say the thing: 
+  message.channel.send(message.author + "*waves to* " + args[1]);
+  }
+     if(command === "cheer") {
+    // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
+    // To get the "message" itself we join the `args` back into a string with spaces: 
+    // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
+    message.delete().catch(O_o=>{}); 
+    // And we get the bot to say the thing: 
+  message.channel.send(message.author + "*cheers at* " + args[1]);
+  }
+       if(command === "laugh") {
+    // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
+    // To get the "message" itself we join the `args` back into a string with spaces: 
+    // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
+    message.delete().catch(O_o=>{}); 
+    // And we get the bot to say the thing: 
+  message.channel.send(message.author + "*laughs at* " + args[1]);
+  }
   if(command === "kick") {
     // This command must be limited to mods and admins. In this example we just hardcode the role names.
     // Please read on Array.some() to understand this bit: 
@@ -142,10 +189,6 @@ client.on("message", async message => {
 	  if(!message.member.roles.some(r=>["Administrator","Alpha"].includes(r.name)) )
       return message.reply("Access denied!");
 	  resetBot(message.channel);
-  }
-    if(command === "idtest"){
-     let role = message.guild.roles.find(role => role.name === args[1]);
-	 message.channel.send(role);
   }
   function resetBot(channel) {
     // send channel a message that you're resetting bot [optional]

@@ -31,6 +31,9 @@ client.on("guildDelete", guild => {
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
   client.user.setActivity(`Serving ${client.guilds.size} servers`);
 });
+bot.on("guildMemberAdd" ,(message, member) => {
+    member.guild.channels.find('name','welcome').send("Welcome to the server " + member);
+});
 
 
 client.on("message", async message => {

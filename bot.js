@@ -60,7 +60,7 @@ client.on("message", async message => {
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-  message.channel.send(message.author + "*says* \"" + sayMessage + "\"");
+  message.channel.send(message.author + " *says* \"" + sayMessage + "\"");
   }
    if(command === "hug") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
@@ -68,7 +68,7 @@ client.on("message", async message => {
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-  message.channel.send(message.author + "*hugs* " + args[1]);
+  message.channel.send(message.author + " *hugs* " + args[0]);
   }
      if(command === "snuggle") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
@@ -76,7 +76,7 @@ client.on("message", async message => {
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-  message.channel.send(message.author + "*snuggles* " + args[1]);
+  message.channel.send(message.author + " *snuggles* " + args[0]);
   }
      if(command === "cuddle") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
@@ -84,7 +84,7 @@ client.on("message", async message => {
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-  message.channel.send(message.author + "*cuddles* " + args[1]);
+  message.channel.send(message.author + " *cuddles* " + args[0]);
   }
      if(command === "wave") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
@@ -92,7 +92,7 @@ client.on("message", async message => {
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-  message.channel.send(message.author + "*waves to* " + args[1]);
+  message.channel.send(message.author + " *waves to* " + args[0]);
   }
      if(command === "cheer") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
@@ -100,7 +100,7 @@ client.on("message", async message => {
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-  message.channel.send(message.author + "*cheers at* " + args[1]);
+  message.channel.send(message.author + " *cheers at* " + args[0]);
   }
        if(command === "laugh") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
@@ -108,7 +108,7 @@ client.on("message", async message => {
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-  message.channel.send(message.author + "*laughs at* " + args[1]);
+  message.channel.send(message.author + " *laughs at* " + args[0]);
   }
   if(command === "kick") {
     // This command must be limited to mods and admins. In this example we just hardcode the role names.

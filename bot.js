@@ -52,7 +52,14 @@ client.on("message", async message => {
   const command = args.shift().toLowerCase();
   
   // Let's go with a few common example commands! Feel free to delete or change those.
- 
+  if(command === "list") {
+    // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
+    // To get the "message" itself we join the `args` back into a string with spaces: 
+    // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
+    message.delete().catch(O_o=>{}); 
+    // And we get the bot to say the thing: 
+  message.channel.send("command list:\n X:say <msg> \n X:hug <target> \n X:snuggle <target> \n X:cuddle <target> \n X:wave <target> \n X:cheer <target>\n X:laugh \n" );
+  }
   if(command === "say") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
     // To get the "message" itself we join the `args` back into a string with spaces: 

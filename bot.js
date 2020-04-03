@@ -213,8 +213,9 @@ client.on("message", async message => {
       let reason= args[2];
       //message.channel.send("hi");
       message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
-      target.setRoles(role.id, reason = 'no reason given');
-      message.channel.send(target + 'your role has been set to: ' + srole);
+      target.setRoles(role.id, reason = 'no reason given')
+	      .then(message.channel.send(target + 'your role has been set to: ' + srole))
+	      .catch(console.error);
       }
       else{
 	message.reply("Access Denied!");      

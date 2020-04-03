@@ -208,9 +208,8 @@ client.on("message", async message => {
       message.delete().catch(O_o=>{});
       if(!message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name)) )
       return message.reply("Access denied!");
-      var target = message.mentions.members.first();
-      var prerole = args[1];
-      var srole = message.guild.roles.find('name', prerole);
+      let target = message.mentions.members.first();
+      let srole = args.slice(1).join(' ');
       switch (srole){
 	  case d:
 	    await target.addRole([message.guild.roles.find(role => role.name === Descendant)]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));

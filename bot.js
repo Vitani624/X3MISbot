@@ -211,24 +211,29 @@ client.on("message", async message => {
       let target = message.mentions.members.first();
       let srole = args.slice(1).join(' ');
       message.channel.send(srole);
-      switch (srole){
+      switch (srole) {
 	  case d:
+	    message.channel.send("entered case d");	      
 	    target.addRole([message.guild.roles.find(role => role.name === Descendant)]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
             message.channel.send(target + ' your role has been changed to Descendant').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));      
           break;
           case p:
+	    message.channel.send("entered case p");
 	    target.addRole([message.guild.roles.find(role => role.name === Pup)]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
             message.channel.send(target + ' your role has been changed to Pup').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));   	      
           break;
 	  case o:
+	    message.channel.send("entered case o");
 	    target.addRole([message.guild.roles.find(role => role.name === Omega)]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
             message.channel.send(target + ' your role has been changed to Omega').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));         
           break;
 	  case b:
+            message.channel.send("entered case b");
 	    target.addRole([message.guild.roles.find(role => role.name === Beta)]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
             message.channel.send(target + ' your role has been changed to Beta').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));         
           break ;
 	  case x:
+	    message.channel.send("entered case x");
 	    target.addRole([message.guild.roles.find(role => role.name === XtremeBeta)]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
             message.channel.send(target + ' your role has been changed to XtremeBeta').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));         
           break;

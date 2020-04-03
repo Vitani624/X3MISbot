@@ -207,7 +207,7 @@ client.on("message", async message => {
  if(command === "setrole"){
       message.delete().catch(O_o=>{});
       if(message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name))){
-      let target = args[0];
+      let target = message.members.mentions.first() || message.guild.members.get(args[0]);
       let srole = args[1];
       let role = message.guild.roles.find('name', srole);
       let reason= args[2];

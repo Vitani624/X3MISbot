@@ -211,7 +211,7 @@ client.on("message", async message => {
       let target = message.mentions.members.first();
       let srole = args.slice(1).join(' ');
       message.channel.send(srole);
-      switch (srole) {
+      switch(srole) {
 	  case d:
 	    message.channel.send("entered case d");	      
 	    target.addRole([message.guild.roles.find(role => role.name === Descendant)]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
@@ -238,8 +238,7 @@ client.on("message", async message => {
             message.channel.send(target + ' your role has been changed to XtremeBeta').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));         
           break;
 	  default:
-	    message.channel.send('sorry,something went wrong, please try again!');	      
-          break;
+	    message.channel.send('sorry,something went wrong, please try again!');
       }
   }
   if(command === "reboot"){

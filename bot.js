@@ -204,38 +204,39 @@ client.on("message", async message => {
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
-  /*if(command === "setrole"){
+  if(command === "setrole"){
       message.delete().catch(O_o=>{});
       if(!message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name)) )
       return message.reply("Access denied!");
       let target = message.mentions.members.first();
-      let role = args[1];	  
+      let prerole = args.join(' ');
+      let role = message.guild.roles.find('name', prerole);
       switch (role){
 	  case d:
-	    target.setRoles([message.guild.roles.find(role => role.name === Descendant])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
+	    await target.setRoles([message.guild.roles.find(role => role.name === Descendant])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
             message.channel.send(target + ' your role has been changed to Descendant').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));      
           break;
           case p:
-	    target.setRoles([message.guild.roles.find(role => role.name === Pup])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
+	    await target.setRoles([message.guild.roles.find(role => role.name === Pup])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
             message.channel.send(target + ' your role has been changed to Pup').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));   	      
           break;
 	  case o:
-	    target.setRoles([message.guild.roles.find(role => role.name === Omega])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
+	    await target.setRoles([message.guild.roles.find(role => role.name === Omega])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
             message.channel.send(target + ' your role has been changed to Omega').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));         
           break;
 	  case b:
-	    target.setRoles([message.guild.roles.find(role => role.name === Beta])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
+	    await target.setRoles([message.guild.roles.find(role => role.name === Beta])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
             message.channel.send(target + ' your role has been changed to Beta').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));         
           break ;
 	  case x:
-	    target.setRoles([message.guild.roles.find(role => role.name === XtremeBeta])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
+	    await target.setRoles([message.guild.roles.find(role => role.name === XtremeBeta])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
             message.channel.send(target + ' your role has been changed to XtremeBeta').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));         
           break;
 	  default:
 	    message.channel.send('sorry,something went wrong, please try again!');	      
           break;
       }
-  }*/
+  }
   if(command === "reboot"){
 	  message.delete().catch(O_o=>{});
 	  if(!message.member.roles.some(r=>["Administrator","Alpha"].includes(r.name)) )

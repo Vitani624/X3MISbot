@@ -214,7 +214,7 @@ client.on("message", async message => {
       let reason= args[2];
       //message.channel.send("hi");
       message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
-      target.setRoles(role.id, reason)
+      target.setRoles([role.id], reason)
 	      .then(message.channel.send(target + 'your role has been set to: ' + srole))
 	      .catch(console.error);
       }

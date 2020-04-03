@@ -212,9 +212,9 @@ client.on("message", async message => {
       let srole = args.slice(1).join(' ');
       let role = message.guild.roles.find('name', srole);
       let reason= args.slice(2).join(' ');
-      message.channel.send(role + ' has id: ' + role.id);  
-      target.setRoles(role.id, reason = 'no reason given');
-	      message.channel.send(target + 'your role has been set to: ' + srole);
+      message.channel.send(target + '\n' + srole + '\n' + role + '\n' + reason);  
+      //target.setRoles(role.id, reason = 'no reason given');
+      //message.channel.send(target + 'your role has been set to: ' + srole);
   }
   if(command === "reboot"){
 	  message.delete().catch(O_o=>{});

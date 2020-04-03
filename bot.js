@@ -210,9 +210,9 @@ client.on("message", async message => {
       return message.reply("Access denied!");
       let target = message.members.mentions.first();
       let srole = args.slice(1).join(' ');
-      let role = message.guild.roles.find('name', srole);
+      let role = message.guild.roles.cache.find('name', srole);
       let reason= args.slice(2).join(' ');
-      message.channel.send(role + ' has id: ' + role.id);  
+      //message.channel.send(role + ' has id: ' + role.id);  
       target.roles.set(role.id, reason = 'no reason given')
 	      .then(message.channel.send(target + 'your role has been set to: ' + srole))
 	      .catch(err=>{

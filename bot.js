@@ -209,10 +209,10 @@ client.on("message", async message => {
       if(message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name))){
       let target = args[0];
       let srole = args[1];
-      //let role = message.guild.roles.find('name', srole);
-      //let reason= args[2];
+      let role = message.guild.roles.find('name', srole);
+      let reason= args[2];
       //message.channel.send("hi");
-      message.channel.send(target + ' ' + srole);  
+      message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
       //target.setRoles(role.id, reason = 'no reason given');
       //message.channel.send(target + 'your role has been set to: ' + srole);
       }

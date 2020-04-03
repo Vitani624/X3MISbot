@@ -212,7 +212,7 @@ client.on("message", async message => {
       let srole = args.slice(1).join(' ');
       let role = message.guild.roles.find('name', srole);
       //message.channel.send(role + ' has id: ' + role.id);  
-      await(target.roles.add(role.id));
+      target.roles.add(role);
       message.channel.send(target + 'your role has been set to: ' + srole);
   }
   if(command === "reboot"){

@@ -204,17 +204,16 @@ client.on("message", async message => {
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
-  if(command === "setrole"){
+ if(command === "setrole"){
       message.delete().catch(O_o=>{});
       if(!message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name)) )
       return message.reply("Access denied!");
       let target = message.members.mentions.first();
       let srole = args.slice(1).join(' ');
       let role = message.guild.roles.find('name', srole);
-      message.channel.send(target + ' ' + srole + ' ' + role);
-      //let reason= args.slice(2).join(' ');
+      let reason= args.slice(2).join(' ');
       //message.channel.send(role + ' has id: ' + role.id);  
-      target.roles.set(role)
+      target.guildMember.roles.set(role.id, reason = 'no reason given')
 	      .then(message.channel.send(target + 'your role has been set to: ' + srole))
 	      .catch(err=>{
 	console.log(err);      

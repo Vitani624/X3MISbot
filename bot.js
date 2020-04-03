@@ -212,8 +212,11 @@ client.on("message", async message => {
       let srole = args.slice(1).join(' ');
       let role = message.guild.roles.find('name', srole);
       //message.channel.send(role + ' has id: ' + role.id);  
-      target.roles.add(role);
-      message.channel.send(target + 'your role has been set to: ' + srole);
+      target.roles.add(role)
+	      .then(message.channel.send(target + 'your role has been set to: ' + srole))
+	      .catch(err=>{
+	console.log(err);      
+      message.channel.send('something went wrong...');});
   }
   if(command === "reboot"){
 	  message.delete().catch(O_o=>{});

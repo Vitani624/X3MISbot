@@ -208,9 +208,10 @@ client.on("message", async message => {
       message.delete().catch(O_o=>{});
       if(!message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name)) )
       return message.reply("Access denied!");
-      let target = message.mentions.members.first();
-      let srole = args.slice(1).join(' ');
+      var target = message.mentions.members.first();
+      var srole = args.slice(1).join(' ');
       message.channel.send(srole);
+      message.channel.send(target);
       switch(srole) {
 	  case d:
 	    message.channel.send("entered case d");	      

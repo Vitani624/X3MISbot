@@ -211,7 +211,7 @@ client.on("message", async message => {
       //let target=args[o];
       let srole = args[1];
       let role = message.guild.roles.find('name', srole);
-      let reason= args[2];
+      let reason= args[2] || "no reason given";
       //message.channel.send("hi");
       //message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
       target.setRoles([role.id], reason)

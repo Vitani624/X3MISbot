@@ -211,6 +211,7 @@ client.on("message", async message => {
       let target = message.members.mentions.first();
       let srole = args.slice(1).join(' ');
       let role = message.guild.roles.fetch('name', srole);
+      message.channel.send(target + ' ' + srole + ' ' + role);
       //let reason= args.slice(2).join(' ');
       message.channel.send(role + ' has id: ' + role.id);  
       target.roles.set(role)

@@ -131,7 +131,7 @@ client.on("message", async message => {
     const sayMessage = args.join(" ");
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{});
-      if(!message.member.roles.some(r=>["Administrator", "Moderator","Alpha","Elder"].includes(r.name)) )
+      if(!message.member.roles.some(r=>["Alpha","Elder"].includes(r.name)) )
       return message.reply("Access denied!");
     // And we get the bot to say the thing: 
     message.channel.send("@everyone " + sayMessage);
@@ -141,7 +141,7 @@ client.on("message", async message => {
     // Please read on Array.some() to understand this bit: 
     // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some?
     message.delete().catch(O_o=>{}); 
-	if(!message.member.roles.some(r=>["Administrator", "Moderator","Alpha"].includes(r.name)) )
+	if(!message.member.roles.some(r=>["Alpha","Elder"].includes(r.name)) )
       return message.reply("Access denied!");
     
     // Let's first check if we have a member and if we can kick them!
@@ -169,7 +169,7 @@ client.on("message", async message => {
 	  message.delete().catch(O_o=>{}); 
     // Most of this command is identical to kick, except that here we'll only let admins do it.
     // In the real world mods could ban too, but this is just an example, right? ;)
-    if(!message.member.roles.some(r=>["Administrator","Alpha"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Alpha","Elder"].includes(r.name)) )
       return message.reply("Access denied!");
     
     let member = message.mentions.members.first();
@@ -188,7 +188,7 @@ client.on("message", async message => {
   
   if(command === "purge") {
 	  message.delete().catch(O_o=>{});
-	  if(!message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name)) )
+	  if(!message.member.roles.some(r=>["Alpha","Elder"].includes(r.name)) )
       return message.reply("Access denied!");
     // This command removes all messages from all users in the channel, up to 100.
     
@@ -206,13 +206,13 @@ client.on("message", async message => {
   }
  if(command === "setrole"){
       message.delete().catch(O_o=>{});
-      if(!message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name)) )
+      if(!message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name)))
       return message.reply("Access denied!");
       /*let target = message.members.mentions.first();
       let srole = args[1];
       let role = message.guild.roles.find('name', srole);
       let reason= args[2];*/
-      message.channel.send(hi);
+      message.channel.send("hi");
       //message.channel.send(target + '\n' + srole + '\n' + role + '\n' + reason);  
       //target.setRoles(role.id, reason = 'no reason given');
       //message.channel.send(target + 'your role has been set to: ' + srole);

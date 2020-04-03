@@ -213,7 +213,7 @@ client.on("message", async message => {
       let role = message.guild.roles.find('name', srole);
       message.channel.send(target + ' ' + srole + ' ' + role);
       //let reason= args.slice(2).join(' ');
-      message.channel.send(role + ' has id: ' + role.id);  
+      //message.channel.send(role + ' has id: ' + role.id);  
       target.roles.set(role)
 	      .then(message.channel.send(target + 'your role has been set to: ' + srole))
 	      .catch(err=>{

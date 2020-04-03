@@ -204,7 +204,7 @@ client.on("message", async message => {
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
-  if(command === "setrole"){
+  /*if(command === "setrole"){
       message.delete().catch(O_o=>{});
       if(!message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name)) )
       return message.reply("Access denied!");
@@ -235,7 +235,7 @@ client.on("message", async message => {
 	    message.channel.send('sorry,something went wrong, please try again!');	      
           break;
       }
-  }
+  }*/
   if(command === "reboot"){
 	  message.delete().catch(O_o=>{});
 	  if(!message.member.roles.some(r=>["Administrator","Alpha"].includes(r.name)) )

@@ -209,9 +209,9 @@ client.on("message", async message => {
       if(!message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name)) )
       return message.reply("Access denied!");
       let target = message.members.mentions.first();
-      let srole = args.slice(1).join(' ');
+      let srole = args[1];
       let role = message.guild.roles.find('name', srole);
-      let reason= args.slice(2).join(' ');
+      let reason= args[2];
       message.channel.send(hi);
       //message.channel.send(target + '\n' + srole + '\n' + role + '\n' + reason);  
       //target.setRoles(role.id, reason = 'no reason given');

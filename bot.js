@@ -66,7 +66,7 @@ client.on("message", async message => {
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-    message.channel.send("command list:\n X:announce <msg> \n X:kick <user> <reason> \n X:ban <user> <reason> \n X:setrole <user> <d/p/o/b/x> \n" );
+    message.channel.send("command list:\n X:announce <msg> \n X:kick <user> <reason> \n X:ban <user> <reason> \n X:setrole <user> <rank> \n" );
   }
   if(command === "say") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
@@ -211,8 +211,8 @@ client.on("message", async message => {
       let target = args.slice(0).join(' ');
       let srole = args.slice(1).join(' ');
       let role = message.guild.roles.find('name', srole);
-      message.channel.send(role + ' has id: ' + role.id);  
-      await(target.addRole(role.id));
+      //message.channel.send(role + ' has id: ' + role.id);  
+      await(target.roles.set(role.id));
       message.channel.send(target + 'your role has been set to: ' + srole);
   }
   if(command === "reboot"){

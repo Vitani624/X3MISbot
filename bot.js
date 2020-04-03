@@ -66,7 +66,7 @@ client.on("message", async message => {
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-    message.channel.send("command list:\n X:announce <msg> \n X:kick <user> <reason> \n X:ban <user> <reason> \n X:setrole <user> \[d/p/o/b/x\] \n" );
+    message.channel.send("command list:\n X:announce <msg> \n X:kick <user> <reason> \n X:ban <user> <reason> \n X:setrole <user> <d/p/o/b/x> \n" );
   }
   if(command === "say") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
@@ -188,6 +188,8 @@ client.on("message", async message => {
   
   if(command === "purge") {
 	  message.delete().catch(O_o=>{});
+	  if(!message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name)) )
+      return message.reply("Access denied!");
     // This command removes all messages from all users in the channel, up to 100.
     
     // get the delete count, as an actual number.
@@ -207,7 +209,7 @@ client.on("message", async message => {
       if(!message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name)) )
       return message.reply("Access denied!");
       let target = message.mentions.members.first();
-      let role = args[1];
+      let role = args[1];	  
       switch (role){
 	  case d:
 	    target.setRoles([message.guild.roles.find(role => role.name === Descendant])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
@@ -228,6 +230,9 @@ client.on("message", async message => {
 	  case x:
 	    target.setRoles([message.guild.roles.find(role => role.name === XtremeBeta])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
             message.channel.send(target + ' your role has been changed to XtremeBeta').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));         
+          break;
+	  default:
+	    message.channel.send('sorry,something went wrong, please try again!');	      
           break;
       }
   }

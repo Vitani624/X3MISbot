@@ -211,6 +211,7 @@ client.on("message", async message => {
       let target = args.slice(0).join(' ');
       let srole = args.slice(1).join(' ');
       let role = message.guild.roles.find('name', srole);
+      message.channel.send(role + ' has id: ' + role.id);  
       await(target.addRole(role.id));
       message.channel.send(target + 'your role has been set to: ' + srole);
   }

@@ -206,8 +206,7 @@ client.on("message", async message => {
   }
  if(command === "setrole"){
       message.delete().catch(O_o=>{});
-      if(!message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name)))
-      return message.reply("Access denied!");
+      if(message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name))){
       let target = message.members.mentions.first();
       //let srole = args[1];
       //let role = message.guild.roles.find('name', srole);
@@ -216,6 +215,10 @@ client.on("message", async message => {
       message.channel.send(target);  
       //target.setRoles(role.id, reason = 'no reason given');
       //message.channel.send(target + 'your role has been set to: ' + srole);
+      }
+      else{
+	message.reply("Access Denied!");      
+      }
   }
   if(command === "reboot"){
 	  message.delete().catch(O_o=>{});

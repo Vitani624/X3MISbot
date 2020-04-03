@@ -209,7 +209,7 @@ client.on("message", async message => {
       if(!message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name)) )
       return message.reply("Access denied!");
       var target = message.mentions.members.first();
-      var prerole = args.join(' ');
+      var prerole = args[1];
       var srole = message.guild.roles.find('name', prerole);
       switch (srole){
 	  case d:

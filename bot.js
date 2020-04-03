@@ -17,7 +17,7 @@ client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
   // Example of changing the bot's playing game to something useful. `client.user` is what the
   // docs refer to as the "ClientUser".
-  client.user.setActivity(`Serving ${client.guilds.size} servers`);
+  client.user.setActivity(`Serving X3MIS`);
 });
 
 client.on("guildCreate", guild => {
@@ -58,7 +58,15 @@ client.on("message", async message => {
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-  message.channel.send("command list:\n X:list (commands) \n X:say <msg> \n X:hug <target> \n X:snuggle <target> \n X:cuddle <target> \n X:wave <target> \n X:cheer <target> \n X:laugh <target> \n" );
+  message.channel.send("command list:\n X:list (commands) \n X:say <msg> \n X:hug <target> \n X:snuggle <target> \n X:cuddle <target> \n X:wave <target> \n X:cheer <target> \n X:laugh <target> \n X:elist list elder commands (elder) \n" );
+  }
+  if(command === "elist") {
+    // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
+    // To get the "message" itself we join the `args` back into a string with spaces: 
+    // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
+    message.delete().catch(O_o=>{}); 
+    // And we get the bot to say the thing: 
+    message.channel.send("command list:\n X:announce <msg> \n X:kick <user> <reason> \n X:ban <user> <reason> \n X:setrole <user> [d/p/o/b/x] \n" );
   }
   if(command === "say") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
@@ -195,12 +203,33 @@ client.on("message", async message => {
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
   if(command === "setrole"){
-	  message.delete().catch(O_o=>{});
-	  if(!message.member.roles.some(r=>["Administrator","Alpha"].includes(r.name)) )
+      message.delete().catch(O_o=>{});
+      if(!message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name)) )
       return message.reply("Access denied!");
-					let target = message.mentions.members.first();
-					target.setRoles([message.guild.roles.find(role => role.name === args[1])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
-					message.channel.send(target + ' your role has been changed to ' + args[1]).catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
+      let target = message.mentions.members.first();
+      let role = args[1];
+      switch (role){
+	  case d:
+	    target.setRoles([message.guild.roles.find(role => role.name === Descendant])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
+            message.channel.send(target + ' your role has been changed to Descendant').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));      
+          break;
+          case p:
+	    target.setRoles([message.guild.roles.find(role => role.name === Pup])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
+            message.channel.send(target + ' your role has been changed to Pup').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));   	      
+          break;
+	  case o:
+	    target.setRoles([message.guild.roles.find(role => role.name === Omega])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
+            message.channel.send(target + ' your role has been changed to Omega').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));         
+          break;
+	  case b:
+	    target.setRoles([message.guild.roles.find(role => role.name === Beta])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
+            message.channel.send(target + ' your role has been changed to Beta').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));         
+          break ;
+	  case x:
+	    target.setRoles([message.guild.roles.find(role => role.name === XtremeBeta])]).catch(error => message.reply(`Couldn't set role because of error: ${error}`));
+            message.channel.send(target + ' your role has been changed to XtremeBeta').catch(error => message.reply(`Couldn't delete messages because of: ${error}`));         
+          break;
+      }
   }
   if(command === "reboot"){
 	  message.delete().catch(O_o=>{});

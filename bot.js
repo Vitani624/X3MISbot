@@ -133,9 +133,8 @@ client.on("message", async message => {
     message.delete().catch(O_o=>{});
       if(!message.member.roles.some(r=>["Alpha","Elder"].includes(r.name)) )
       return message.reply("Access denied!");
-    // And we get the bot to say the thing: 
-    let roleid = message.guild.roles.find(role => role.name === "Notifications").id;	  
-    message.channel.send('<@&roleid> ' + sayMessage);
+    // And we get the bot to say the thing: 	  
+    message.channel.send('<@&${message.guild.roles.find(role => role.name === "Notifications").id}> ' + sayMessage);
   }
   if(command === "kick") {
     // This command must be limited to mods and admins. In this example we just hardcode the role names.

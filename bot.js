@@ -23,13 +23,11 @@ client.on("ready", () => {
 client.on("guildCreate", guild => {
   // This event triggers when the bot joins a guild.
   console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
-  client.user.setActivity(`Serving ${client.guilds.size} servers`);
 });
 
 client.on("guildDelete", guild => {
   // this event triggers when the bot is removed from a guild.
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
-  client.user.setActivity(`Serving ${client.guilds.size} servers`);
 });
 
 
@@ -66,7 +64,7 @@ client.on("message", async message => {
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-    message.channel.send("command list:\n X:announce <msg> \n X:kick <user> <reason> \n X:ban <user> <reason> \n X:setrole <user> <rank> <reason> \n" );
+    message.channel.send("command list:\n X:announce <msg> \n X:event <msg> \n X:kick <user> <reason> \n X:ban <user> <reason> \n X:setrole <user> <rank> <reason> \n" );
   }
   if(command === "say") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
@@ -134,8 +132,19 @@ client.on("message", async message => {
       if(!message.member.roles.some(r=>["Alpha","Elder"].includes(r.name)) )
       return message.reply("Access denied!");
     // And we get the bot to say the thing: 	  
-    message.channel.send(`<@&${message.guild.roles.find(role => role.name === "Notifications").id}> ` + sayMessage);
+    message.channel.send(`<@&${message.guild.roles.find(role => role.name === "Notifications").id}> ` + **sayMessage**);
   }
+    if(command === "event") {
+    // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
+    // To get the "message" itself we join the `args` back into a string with spaces: 
+    const sayMessage = args.join(" ");
+    // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
+    message.delete().catch(O_o=>{});
+      if(!message.member.roles.some(r=>["Alpha","Elder"].includes(r.name)) )
+      return message.reply("Access denied!");
+    // And we get the bot to say the thing: 	  
+    message.channel.send(`<@&${message.guild.roles.find(role => role.name === "Events").id}> ` + **sayMessage**);
+  }	
   if(command === "kick") {
     // This command must be limited to mods and admins. In this example we just hardcode the role names.
     // Please read on Array.some() to understand this bit: 

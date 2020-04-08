@@ -5,7 +5,7 @@ const Discord = require("discord.js");
 // some might call it `cootchie`. Either way, when you see `client.something`, or `bot.something`,
 // this is what we're refering to. Your client.
 const client = new Discord.Client();
-Const guildID = '509509779761397798';
+const guildID = '509509779761397798';
 // Here we load the config.json file that contains our token and our prefix values. 
 const config = require("./auth.json");
 require('http').createServer().listen(3000);

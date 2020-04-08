@@ -42,10 +42,10 @@ client.on("guildMemberRemove", guild => {
   updateMemberStat();
 });
 client.on("roleDelete", guild => {
-  UpdateRoleStat();
+  updateRoleStat();
 });
 client.on("roleCreate", guild => {
-  UpdateRoleStat();
+  updateRoleStat();
 });
 
 function updateChannelStat(){

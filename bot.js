@@ -50,7 +50,7 @@ client.on("guildMemberAdd", member => {
 let memberStat = client.channels.get("561044806919520256");
 let testChannel = client.channels.get("697069936501063760");
 let memberCount = member.guild.members.filter(member => !member.user.bot).size;
-memberStat.setName(`Channels: test`);
+memberStat.setName(`Users: ${memberCount}`);
 //testChannel.channel.send(memberStat); 
 });
 client.on("guildMemberRemove", member => {
@@ -58,7 +58,7 @@ client.on("guildMemberRemove", member => {
 let memberStat = client.channels.get("561044806919520256");
 let testChannel = client.channels.get("697069936501063760");
 let memberCount = member.guild.members.filter(member => !member.user.bot).size;
-memberStat.setName(`Channels: test`);
+memberStat.setName(`Users: ${memberCount}`);
 //testChannel.channel.send(memberStat); 
 });
 client.on("roleDelete", role => {
@@ -66,7 +66,7 @@ if(role.guild.id !== guildID) return;
 let roleStat = client.channels.get("561042914302754838");
 let testChannel = client.channels.get("697069936501063760");
 let roleCount = role.guild.roles.size;
-roleStat.setName(`Channels: ${roleCount}`);
+roleStat.setName(`Roles: ${roleCount}`);
 //testChannel.channel.send(roleStat); 
 });
 client.on("roleCreate", role => {
@@ -74,7 +74,7 @@ client.on("roleCreate", role => {
 let roleStat = client.channels.get("561042914302754838");
 let testChannel = client.channels.get("697069936501063760");
 let roleCount = role.guild.roles.size;
-roleStat.setName(`Channels: ${roleCount}`);
+roleStat.setName(`Roles: ${roleCount}`);
 //testChannel.channel.send(roleStat); 
 });
 

@@ -52,7 +52,7 @@ function updateChannelStat(){
 if(channel.guild.id !== guildID) return;
 let channelStat = client.channels.get("561042915011592222");  
 let testChannel = client.channels.get("697069936501063760");
-let channelCount = guild.channels.size;
+let channelCount = channel.guild.channels.size;
 channelStat.setName(`Channels: ${channelCount}`);
 //testChannel.channel.send(channelStat);
 }
@@ -60,7 +60,7 @@ function updateMemberStat(){
 if(member.guild.id !== guildID) return;
 let memberStat = client.channels.get("561044806919520256");
 let testChannel = client.channels.get("697069936501063760");
-let memberCount = guild.members.filter(member => !member.user.bot).size;
+let memberCount = member.guild.members.filter(member => !member.user.bot).size;
 memberStat.setName(`Channels: test`);
 //testChannel.channel.send(memberStat);
 }
@@ -68,7 +68,7 @@ function updateRoleStat(){
 if(role.guild.id !== guildID) return;
 let roleStat = client.channels.get("561042914302754838");
 let testChannel = client.channels.get("697069936501063760");
-let roleCount = guild.roles.size;
+let roleCount = role.guild.roles.size;
 roleStat.setName(`Channels: ${roleCount}`);
 //testChannel.channel.send(roleStat);
 }

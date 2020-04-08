@@ -59,7 +59,7 @@ function updateMemberStat(){
 let memberStat = client.channels.get("561044806919520256");
 let testChannel = client.channels.get("697069936501063760");
 let memberCount = guild.members.filter(member => !member.user.bot).size;
-memberStat.setName(`Channels: ${memberCount}`);
+memberStat.setName(`Channels: test`);
 testChannel.channel.send(memberStat);
 }
 function updateRoleStat(){

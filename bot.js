@@ -29,8 +29,40 @@ client.on("guildDelete", guild => {
   // this event triggers when the bot is removed from a guild.
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
 });
+client.on("channelDelete", guild => {
+  updateChannelStat();
+});
+client.on("channelCreate", guild => {
+  updateChannelStat();
+});
+client.on("guildMemberAdd", guild => {
+  updateMemberStat();
+});
+client.on("guildMemberRemove", guild => {
+  updateMemberStat();
+});
+client.on("roleDelete", guild => {
+  UpdateRoleStat();
+});
+client.on("roleCreate", guild => {
+  UpdateRoleStat();
+});
 
-
+function updateChannelStat(){
+let channelStat = bot.channels.get("561042915011592222");
+let channelCount = guild.channels.size;
+channelStat.setName(`Channels: ${channelCount}`);
+}
+function updateMemberStat(){
+let memberStat = bot.channels.get("561044806919520256");
+let memberCount = guild.members.filter(member => !member.user.bot).size;
+memberStat.setName(`Channels: ${memberCount}`);
+}
+function updateRoleStat(){
+let roleStat = bot.channels.get("561042914302754838");
+let roleCount = guild.roles.size;
+roleStat.setName(`Channels: ${roleCount}`);	
+}
 client.on("message", async message => {
   // This event will run on every single message received, from any channel or DM.
   

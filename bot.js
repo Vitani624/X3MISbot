@@ -48,18 +48,22 @@ client.on("roleCreate", guild => {
   updateRoleStat();
 });
 
+bot.on('ready', () => {
+    console.log(`Logged in as ${bot.user.tag}!`);
+    var roleStat = bot.channels.get("561042914302754838");
+    var channelStat = bot.channels.get("561042915011592222");
+    var memberStat = bot.channels.get("561044806919520256");
+});
+
 function updateChannelStat(){
-let channelStat = bot.channels.get("561042915011592222");
 let channelCount = guild.channels.size;
 channelStat.setName(`Channels: ${channelCount}`);
 }
 function updateMemberStat(){
-let memberStat = bot.channels.get("561044806919520256");
 let memberCount = guild.members.filter(member => !member.user.bot).size;
 memberStat.setName(`Channels: ${memberCount}`);
 }
 function updateRoleStat(){
-let roleStat = bot.channels.get("561042914302754838");
 let roleCount = guild.roles.size;
 roleStat.setName(`Channels: ${roleCount}`);	
 }

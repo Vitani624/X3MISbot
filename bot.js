@@ -53,21 +53,21 @@ let channelStat = client.channels.get("561042915011592222");
 let testChannel = client.channels.get("697069936501063760");
 let channelCount = guild.channels.size;
 channelStat.setName(`Channels: ${channelCount}`);
-testChannel.channel.send(channelStat);
+//testChannel.channel.send(channelStat);
 }
 function updateMemberStat(){
 let memberStat = client.channels.get("561044806919520256");
 let testChannel = client.channels.get("697069936501063760");
 let memberCount = guild.members.filter(member => !member.user.bot).size;
 memberStat.setName(`Channels: test`);
-testChannel.channel.send(memberStat);
+//testChannel.channel.send(memberStat);
 }
 function updateRoleStat(){
 let roleStat = client.channels.get("561042914302754838");
 let testChannel = client.channels.get("697069936501063760");
 let roleCount = guild.roles.size;
 roleStat.setName(`Channels: ${roleCount}`);
-testChannel.channel.send(roleStat);
+//testChannel.channel.send(roleStat);
 }
 client.on("message", async message => {
   // This event will run on every single message received, from any channel or DM.

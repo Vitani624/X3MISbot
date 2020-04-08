@@ -29,7 +29,7 @@ client.on("guildDelete", guild => {
   // this event triggers when the bot is removed from a guild.
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
 });
-client.on("channelDelete", guild => {
+/*client.on("channelDelete", guild => {
   updateChannelStat();
 });
 client.on("channelCreate", guild => {
@@ -68,7 +68,7 @@ let testChannel = client.channels.get("697069936501063760");
 let roleCount = guild.roles.size;
 roleStat.setName(`Channels: ${roleCount}`);
 //testChannel.channel.send(roleStat);
-}
+}*/
 client.on("message", async message => {
   // This event will run on every single message received, from any channel or DM.
   
@@ -86,7 +86,17 @@ client.on("message", async message => {
   // args = ["Is", "this", "the", "real", "life?"]
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  
+  if(command === "stats"){
+let channelStat = client.channels.get("561042915011592222");
+let memberStat = client.channels.get("561044806919520256");
+let roleStat = client.channels.get("561042914302754838");
+let channelCount = guild.channels.size;
+let memberCount = guild.members.filter(member => !member.user.bot).size;
+let roleCount = guild.roles.size;
+memberStat.setName(`Channels: ${memberCount}`);
+roleStat.setName(`Channels: ${roleCount}`);
+channelStat.setName(`Channels: ${channelCount}`);
+}
   // Let's go with a few common example commands! Feel free to delete or change those.
   if(command === "list") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 

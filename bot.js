@@ -30,25 +30,55 @@ client.on("guildDelete", guild => {
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
 });
 client.on("channelDelete", channel => {
-  updateChannelStat();
+ if(channel.guild.id !== guildID) return;
+let channelStat = client.channels.get("561042915011592222");  
+let testChannel = client.channels.get("697069936501063760");
+let channelCount = channel.guild.channels.size;
+channelStat.setName(`Channels: ${channelCount}`);
+//testChannel.channel.send(channelStat); 
 });
 client.on("channelCreate", channel => {
-  updateChannelStat();
+  if(channel.guild.id !== guildID) return;
+let channelStat = client.channels.get("561042915011592222");  
+let testChannel = client.channels.get("697069936501063760");
+let channelCount = channel.guild.channels.size;
+channelStat.setName(`Channels: ${channelCount}`);
+//testChannel.channel.send(channelStat);
 });
 client.on("guildMemberAdd", member => {
-  updateMemberStat();
+ if(member.guild.id !== guildID) return;
+let memberStat = client.channels.get("561044806919520256");
+let testChannel = client.channels.get("697069936501063760");
+let memberCount = member.guild.members.filter(member => !member.user.bot).size;
+memberStat.setName(`Channels: test`);
+//testChannel.channel.send(memberStat); 
 });
 client.on("guildMemberRemove", member => {
-  updateMemberStat();
+ if(member.guild.id !== guildID) return;
+let memberStat = client.channels.get("561044806919520256");
+let testChannel = client.channels.get("697069936501063760");
+let memberCount = member.guild.members.filter(member => !member.user.bot).size;
+memberStat.setName(`Channels: test`);
+//testChannel.channel.send(memberStat); 
 });
 client.on("roleDelete", role => {
-  updateRoleStat();
+if(role.guild.id !== guildID) return;
+let roleStat = client.channels.get("561042914302754838");
+let testChannel = client.channels.get("697069936501063760");
+let roleCount = role.guild.roles.size;
+roleStat.setName(`Channels: ${roleCount}`);
+//testChannel.channel.send(roleStat); 
 });
 client.on("roleCreate", role => {
-  updateRoleStat();
+ if(role.guild.id !== guildID) return;
+let roleStat = client.channels.get("561042914302754838");
+let testChannel = client.channels.get("697069936501063760");
+let roleCount = role.guild.roles.size;
+roleStat.setName(`Channels: ${roleCount}`);
+//testChannel.channel.send(roleStat); 
 });
 
-function updateChannelStat(){
+/*function updateChannelStat(){
 if(channel.guild.id !== guildID) return;
 let channelStat = client.channels.get("561042915011592222");  
 let testChannel = client.channels.get("697069936501063760");
@@ -71,7 +101,7 @@ let testChannel = client.channels.get("697069936501063760");
 let roleCount = role.guild.roles.size;
 roleStat.setName(`Channels: ${roleCount}`);
 //testChannel.channel.send(roleStat);
-}
+}*/
 client.on("message", async message => {
   // This event will run on every single message received, from any channel or DM.
   

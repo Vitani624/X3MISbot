@@ -87,15 +87,17 @@ client.on("message", async message => {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
   if(command === "stats"){
+message.delete().catch(O_o=>{});
 let channelStat = client.channels.get("561042915011592222");
 let memberStat = client.channels.get("561044806919520256");
 let roleStat = client.channels.get("561042914302754838");
-let channelCount = guild.channels.size;
-let memberCount = guild.members.filter(member => !member.user.bot).size;
-let roleCount = guild.roles.size;
+let channelCount = message.guild.channels.size;
+let memberCount = message.guild.members.filter(member => !member.user.bot).size;
+let roleCount = message.guild.roles.size;
 memberStat.setName(`Channels: ${memberCount}`);
 roleStat.setName(`Channels: ${roleCount}`);
 channelStat.setName(`Channels: ${channelCount}`);
+message.channel.send("updated stats!");
 }
   // Let's go with a few common example commands! Feel free to delete or change those.
   if(command === "list") {

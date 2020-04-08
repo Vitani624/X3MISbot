@@ -18,6 +18,9 @@ client.on("ready", () => {
   // Example of changing the bot's playing game to something useful. `client.user` is what the
   // docs refer to as the "ClientUser".
   client.user.setActivity(`Serving X3MIS`);
+  var roleStat = client.channels.get("561042914302754838");
+  var channelStat = client.channels.get("561042915011592222");
+  var memberStat = client.channels.get("561044806919520256");
 });
 
 client.on("guildCreate", guild => {
@@ -46,13 +49,6 @@ client.on("roleDelete", guild => {
 });
 client.on("roleCreate", guild => {
   updateRoleStat();
-});
-
-bot.on('ready', () => {
-    console.log(`Logged in as ${bot.user.tag}!`);
-    var roleStat = bot.channels.get("561042914302754838");
-    var channelStat = bot.channels.get("561042915011592222");
-    var memberStat = bot.channels.get("561044806919520256");
 });
 
 function updateChannelStat(){

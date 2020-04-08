@@ -18,11 +18,6 @@ client.on("ready", () => {
   // Example of changing the bot's playing game to something useful. `client.user` is what the
   // docs refer to as the "ClientUser".
   client.user.setActivity(`Serving X3MIS`);
-  var roleStat = client.channels.get("561042914302754838");
-  var channelStat = client.channels.get("561042915011592222");
-  var memberStat = client.channels.get("561044806919520256");
-  var testChannel = client.channels.get("697069936501063760");
-	console.log(roleStat + ' ' + channelStat + ' ' + memberStat + ' ' + testChannel);
 });
 
 client.on("guildCreate", guild => {
@@ -54,16 +49,22 @@ client.on("roleCreate", guild => {
 });
 
 function updateChannelStat(){
+let channelStat = client.channels.get("561042915011592222");  
+let testChannel = client.channels.get("697069936501063760");
 let channelCount = guild.channels.size;
 channelStat.setName(`Channels: ${channelCount}`);
 testChannel.channel.send(channelStat);
 }
 function updateMemberStat(){
+let memberStat = client.channels.get("561044806919520256");
+let testChannel = client.channels.get("697069936501063760");
 let memberCount = guild.members.filter(member => !member.user.bot).size;
 memberStat.setName(`Channels: ${memberCount}`);
 testChannel.channel.send(memberStat);
 }
 function updateRoleStat(){
+let roleStat = client.channels.get("561042914302754838");
+let testChannel = client.channels.get("697069936501063760");
 let roleCount = guild.roles.size;
 roleStat.setName(`Channels: ${roleCount}`);
 testChannel.channel.send(roleStat);

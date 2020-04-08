@@ -5,7 +5,7 @@ const Discord = require("discord.js");
 // some might call it `cootchie`. Either way, when you see `client.something`, or `bot.something`,
 // this is what we're refering to. Your client.
 const client = new Discord.Client();
-
+Const guildID = '509509779761397798';
 // Here we load the config.json file that contains our token and our prefix values. 
 const config = require("./auth.json");
 require('http').createServer().listen(3000);
@@ -29,26 +29,27 @@ client.on("guildDelete", guild => {
   // this event triggers when the bot is removed from a guild.
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
 });
-/*client.on("channelDelete", guild => {
+client.on("channelDelete", channel => {
   updateChannelStat();
 });
-client.on("channelCreate", guild => {
+client.on("channelCreate", channel => {
   updateChannelStat();
 });
-client.on("guildMemberAdd", guild => {
+client.on("guildMemberAdd", member => {
   updateMemberStat();
 });
-client.on("guildMemberRemove", guild => {
+client.on("guildMemberRemove", member => {
   updateMemberStat();
 });
-client.on("roleDelete", guild => {
+client.on("roleDelete", role => {
   updateRoleStat();
 });
-client.on("roleCreate", guild => {
+client.on("roleCreate", role => {
   updateRoleStat();
 });
 
 function updateChannelStat(){
+if(channel.guild.id !== guildID) return;
 let channelStat = client.channels.get("561042915011592222");  
 let testChannel = client.channels.get("697069936501063760");
 let channelCount = guild.channels.size;
@@ -56,6 +57,7 @@ channelStat.setName(`Channels: ${channelCount}`);
 //testChannel.channel.send(channelStat);
 }
 function updateMemberStat(){
+if(member.guild.id !== guildID) return;
 let memberStat = client.channels.get("561044806919520256");
 let testChannel = client.channels.get("697069936501063760");
 let memberCount = guild.members.filter(member => !member.user.bot).size;
@@ -63,12 +65,13 @@ memberStat.setName(`Channels: test`);
 //testChannel.channel.send(memberStat);
 }
 function updateRoleStat(){
+if(role.guild.id !== guildID) return;
 let roleStat = client.channels.get("561042914302754838");
 let testChannel = client.channels.get("697069936501063760");
 let roleCount = guild.roles.size;
 roleStat.setName(`Channels: ${roleCount}`);
 //testChannel.channel.send(roleStat);
-}*/
+}
 client.on("message", async message => {
   // This event will run on every single message received, from any channel or DM.
   
@@ -86,7 +89,7 @@ client.on("message", async message => {
   // args = ["Is", "this", "the", "real", "life?"]
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
-  if(command === "stats"){
+ /* if(command === "stats"){
 message.delete().catch(O_o=>{});
 let channelStat = client.channels.get("561042915011592222");
 let memberStat = client.channels.get("561044806919520256");
@@ -98,7 +101,7 @@ memberStat.setName(`Channels: ${memberCount}`);
 roleStat.setName(`Channels: ${roleCount}`);
 channelStat.setName(`Channels: ${channelCount}`);
 message.channel.send("updated stats!");
-}
+}*/
   // Let's go with a few common example commands! Feel free to delete or change those.
   if(command === "list") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 

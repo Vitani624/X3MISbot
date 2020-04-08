@@ -21,7 +21,8 @@ client.on("ready", () => {
   var roleStat = client.channels.get("561042914302754838");
   var channelStat = client.channels.get("561042915011592222");
   var memberStat = client.channels.get("561044806919520256");
-  var testChannel = client.channels.get("697069936501063760");	
+  var testChannel = client.channels.get("697069936501063760");
+	console.log(roleStat + ' ' + channelStat + ' ' + memberStat + ' ' + testChannel);
 });
 
 client.on("guildCreate", guild => {

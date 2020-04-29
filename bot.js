@@ -214,13 +214,12 @@ client.on("message", async message => {
  if(command === "strike"){
       message.delete().catch(O_o=>{});
       if(message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name))){
-      let target = message.mentions.members.first() || message.guild.members.get(args[0]);
+      var target = message.mentions.members.first() || message.guild.members.get(args[0]);
       //let target=args[o];
       let strike = args[1];
-      let srole = args[2];
       	switch(strike) {
       		case 's':
-      			let role = message.guild.roles.find('name', srole);
+      			let role = message.guild.roles.find('name', 'X');
       			//message.channel.send("hi");
       			//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
      		 	target.setRoles([role.id])
@@ -228,7 +227,7 @@ client.on("message", async message => {
 	      		.catch(console.error);
     		break;
    		case 'm':
-      			let role2 = message.guild.roles.find('name', srole);
+      			let role2 = message.guild.roles.find('name', 'X X');
       			//message.channel.send("hi");
      		 	//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
       			target.setRoles([role2.id])
@@ -236,7 +235,7 @@ client.on("message", async message => {
 	      		.catch(console.error);
     		break;
     		case 'f':
-      			let role3 = message.guild.roles.find('name', srole);
+      			let role3 = message.guild.roles.find('name', 'X X X');
       			//message.channel.send("hi");
       			//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
       			target.setRoles([role3.id])

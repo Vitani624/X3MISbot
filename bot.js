@@ -298,7 +298,7 @@ message.channel.send("updated stats!");
   }
  if(command === "setrole"){
       message.delete().catch(O_o=>{});
-      if(message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name))){
+      if(message.member.roles.some(r=>["Administrator","Alpha","Elder","MEE6"].includes(r.name))){
       let target = message.mentions.members.first() || message.guild.members.get(args[0]);
       //let target=args[o];
       let srole = args[1];

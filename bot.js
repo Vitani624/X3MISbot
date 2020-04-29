@@ -255,7 +255,7 @@ message.channel.send("updated stats!");
       //let target=args[o];
       let strike = args[1];
       	switch(strike) {
-      		case 1:
+      		case '1':
       			let role = message.guild.roles.find('name', 'X');
       			//message.channel.send("hi");
       			//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
@@ -263,7 +263,7 @@ message.channel.send("updated stats!");
 	      		.then(message.channel.send(target + ' you have been given your first strike!'))
 	      		.catch(console.error);
     		break;
-   		case 2:
+   		case '2':
       			let role2 = message.guild.roles.find('name', 'X X');
       			//message.channel.send("hi");
      		 	//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
@@ -271,7 +271,7 @@ message.channel.send("updated stats!");
 	      		.then(message.channel.send(target + ' you have been given your second strike!'))
 	      		.catch(console.error);
     		break;
-    		case 3:
+    		case '3':
       			let role3 = message.guild.roles.find('name', 'X X X');
       			//message.channel.send("hi");
       			//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  

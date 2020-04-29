@@ -78,30 +78,6 @@ roleStat.setName(`Roles: ${roleCount}`);
 //testChannel.channel.send(roleStat); 
 });
 
-/*function updateChannelStat(){
-if(channel.guild.id !== guildID) return;
-let channelStat = client.channels.get("561042915011592222");  
-let testChannel = client.channels.get("697069936501063760");
-let channelCount = channel.guild.channels.size;
-channelStat.setName(`Channels: ${channelCount}`);
-//testChannel.channel.send(channelStat);
-}
-function updateMemberStat(){
-if(member.guild.id !== guildID) return;
-let memberStat = client.channels.get("561044806919520256");
-let testChannel = client.channels.get("697069936501063760");
-let memberCount = member.guild.members.filter(member => !member.user.bot).size;
-memberStat.setName(`Channels: test`);
-//testChannel.channel.send(memberStat);
-}
-function updateRoleStat(){
-if(role.guild.id !== guildID) return;
-let roleStat = client.channels.get("561042914302754838");
-let testChannel = client.channels.get("697069936501063760");
-let roleCount = role.guild.roles.size;
-roleStat.setName(`Channels: ${roleCount}`);
-//testChannel.channel.send(roleStat);
-}*/
 client.on("message", async message => {
   // This event will run on every single message received, from any channel or DM.
   
@@ -119,19 +95,6 @@ client.on("message", async message => {
   // args = ["Is", "this", "the", "real", "life?"]
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
- /* if(command === "stats"){
-message.delete().catch(O_o=>{});
-let channelStat = client.channels.get("561042915011592222");
-let memberStat = client.channels.get("561044806919520256");
-let roleStat = client.channels.get("561042914302754838");
-let channelCount = message.guild.channels.size;
-let memberCount = message.guild.members.filter(member => !member.user.bot).size;
-let roleCount = message.guild.roles.size;
-memberStat.setName(`Channels: ${memberCount}`);
-roleStat.setName(`Channels: ${roleCount}`);
-channelStat.setName(`Channels: ${channelCount}`);
-message.channel.send("updated stats!");
-}*/
   // Let's go with a few common example commands! Feel free to delete or change those.
   if(command === "list") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
@@ -147,7 +110,7 @@ message.channel.send("updated stats!");
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-    message.channel.send("command list:\n X:announce <msg> \n X:event <msg> \n X:strike <user> <strike number> \n" );
+    message.channel.send("command list:\n X:announce <msg> \n X:event <msg> \n X:strike <user> <strike number> <role> \n" );
   }
   if(command === "say") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
@@ -251,12 +214,13 @@ message.channel.send("updated stats!");
  if(command === "strike"){
       message.delete().catch(O_o=>{});
       if(message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name))){
-      var target = message.mentions.members.first() || message.guild.members.get(args[0]);
+      let target = message.mentions.members.first() || message.guild.members.get(args[0]);
       //let target=args[o];
       let strike = args[1];
+      let srole = args[2];	      
       	switch(strike) {
       		case 's':
-      			let role = message.guild.roles.find('name', 'X');
+      			let role = message.guild.roles.find('name', srole);
       			//message.channel.send("hi");
       			//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
      		 	target.setRoles([role.id])
@@ -264,7 +228,7 @@ message.channel.send("updated stats!");
 	      		.catch(console.error);
     		break;
    		case 'm':
-      			let role2 = message.guild.roles.find('name', 'X X');
+      			let role2 = message.guild.roles.find('name', srole);
       			//message.channel.send("hi");
      		 	//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
       			target.setRoles([role2.id])
@@ -272,7 +236,7 @@ message.channel.send("updated stats!");
 	      		.catch(console.error);
     		break;
     		case 'f':
-      			let role3 = message.guild.roles.find('name', 'X X X');
+      			let role3 = message.guild.roles.find('name', srole);
       			//message.channel.send("hi");
       			//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
       			target.setRoles([role3.id])

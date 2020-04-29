@@ -110,7 +110,7 @@ client.on("message", async message => {
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-    message.channel.send("command list:\n X:announce <msg> \n X:event <msg> \n X:strike <user> <strike number> <role> \n" );
+    message.channel.send("command list:\n X:announce <msg> \n X:event <msg> \n X:strike <user> <S/M/F> \n" );
   }
   if(command === "say") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
@@ -218,7 +218,7 @@ client.on("message", async message => {
       //let target=args[o];
       let strike = args[1];
       	switch(strike) {
-      		case 's':
+      		case 'S':
       			let role = message.guild.roles.find('name', 'X');
       			//message.channel.send("hi");
       			//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
@@ -226,7 +226,7 @@ client.on("message", async message => {
 	      		.then(message.channel.send(target + ' you have been given your first strike!'))
 	      		.catch(console.error);
     		break;
-   		case 'm':
+   		case 'M':
       			let role2 = message.guild.roles.find('name', 'X X');
       			//message.channel.send("hi");
      		 	//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
@@ -234,7 +234,7 @@ client.on("message", async message => {
 	      		.then(message.channel.send(target + ' you have been given your second strike!'))
 	      		.catch(console.error);
     		break;
-    		case 'f':
+    		case 'F':
       			let role3 = message.guild.roles.find('name', 'X X X');
       			//message.channel.send("hi");
       			//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  

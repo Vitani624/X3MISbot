@@ -147,7 +147,7 @@ message.channel.send("updated stats!");
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
-    message.channel.send("command list:\n X:announce <msg> \n X:event <msg> \n X:kick <user> <reason> \n X:ban <user> <reason> \n X:setrole <user> <rank> <reason> \n" );
+    message.channel.send("command list:\n X:announce <msg> \n X:event <msg> \n X:strike <user> <strike number> \n" );
   }
   if(command === "say") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
@@ -228,55 +228,6 @@ message.channel.send("updated stats!");
     // And we get the bot to say the thing: 	  
     message.channel.send(`<@&${message.guild.roles.find(role => role.name === "Events").id}> ` + '**' + sayEmessage + '**');
   }	
-  if(command === "kick") {
-    // This command must be limited to mods and admins. In this example we just hardcode the role names.
-    // Please read on Array.some() to understand this bit: 
-    // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some?
-    message.delete().catch(O_o=>{}); 
-	if(!message.member.roles.some(r=>["Alpha","Elder"].includes(r.name)) )
-      return message.reply("Access denied!");
-    
-    // Let's first check if we have a member and if we can kick them!
-    // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
-    // We can also support getting the member by ID, which would be args[0]
-    let member = message.mentions.members.first() || message.guild.members.get(args[0]);
-    if(!member)
-      return message.reply("Please mention a valid member of this server");
-    if(!member.kickable) 
-      return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
-    
-    // slice(1) removes the first part, which here should be the user mention or ID
-    // join(' ') takes all the various parts to make it a single string.
-    let reason = args.slice(1).join(' ');
-    if(!reason) reason = "No reason provided";
-    
-    // Now, time for a swift kick in the nuts!
-    await member.kick(reason)
-      .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
-    message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
-    
-  }
-  
-  if(command === "ban") {
-	  message.delete().catch(O_o=>{}); 
-    // Most of this command is identical to kick, except that here we'll only let admins do it.
-    // In the real world mods could ban too, but this is just an example, right? ;)
-    if(!message.member.roles.some(r=>["Alpha","Elder"].includes(r.name)) )
-      return message.reply("Access denied!");
-    
-    let member = message.mentions.members.first();
-    if(!member)
-      return message.reply("Please mention a valid member of this server");
-    if(!member.bannable) 
-      return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
-
-    let reason = args.slice(1).join(' ');
-    if(!reason) reason = "No reason provided";
-    
-    await member.ban(reason)
-      .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
-    message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
-  }
   
   if(command === "purge") {
 	  message.delete().catch(O_o=>{});
@@ -296,19 +247,44 @@ message.channel.send("updated stats!");
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
- if(command === "setrole"){
+	
+ if(command === "strike"){
       message.delete().catch(O_o=>{});
-      if(message.member.roles.some(r=>["Administrator","Alpha","Elder","MEE6"].includes(r.name))){
+      if(message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name))){
       let target = message.mentions.members.first() || message.guild.members.get(args[0]);
       //let target=args[o];
-      let srole = args[1];
-      let role = message.guild.roles.find('name', srole);
-      let reason= args[2] || "no reason given";
-      //message.channel.send("hi");
-      //message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
-      target.setRoles([role.id], reason)
-	      .then(message.channel.send(target + ' your role has been set to: ' + srole + ' because: ' + reason))
-	      .catch(console.error);
+      let strike = args[1];
+      	switch(strike) {
+      		case 1:
+      			let role = message.guild.roles.find('name', 'X');
+      			//message.channel.send("hi");
+      			//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
+     		 	target.setRoles([role.id])
+	      		.then(message.channel.send(target + ' you have been given your first strike!'))
+	      		.catch(console.error);
+    		break;
+   		case 2:
+      			let role = message.guild.roles.find('name', 'X X');
+      			//message.channel.send("hi");
+     		 	//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
+      			target.setRoles([role.id])
+	      		.then(message.channel.send(target + ' you have been given your second strike!'))
+	      		.catch(console.error);
+    		break;
+    		case 3:
+      			let role = message.guild.roles.find('name', 'X X X');
+      			//message.channel.send("hi");
+      			//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
+      			target.setRoles([role.id])
+	      		.then(message.channel.send(target + ' you have been given your third strike!'))
+	      		.catch(console.error);
+			await target.ban(reason)
+      			.catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
+    			message.reply(`${target.user.tag} has been banned because they gained 3 strikes!`);
+    		break;
+  		default:
+    			return false;
+      	}	
       }
       else{
 	message.reply("Access Denied!");      

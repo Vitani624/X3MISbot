@@ -278,7 +278,7 @@ message.channel.send("updated stats!");
       			target.setRoles([role.id])
 	      		.then(message.channel.send(target + ' you have been given your third strike!'))
 	      		.catch(console.error);
-			await target.ban(reason)
+			await target.ban()
       			.catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
     			message.reply(`${target.user.tag} has been banned because they gained 3 strikes!`);
     		break;

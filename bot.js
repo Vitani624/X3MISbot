@@ -251,7 +251,7 @@ message.channel.send("updated stats!");
  if(command === "strike"){
       message.delete().catch(O_o=>{});
       if(message.member.roles.some(r=>["Administrator","Alpha","Elder"].includes(r.name))){
-      var target = message.mentions.members.first() || message.guild.members.get(args[0]);
+      let target = message.mentions.members.first() || message.guild.members.get(args[0]);
       //let target=args[o];
       let strike = args[1];
       	switch(strike) {
@@ -264,18 +264,18 @@ message.channel.send("updated stats!");
 	      		.catch(console.error);
     		break;
    		case 2:
-      			let role = message.guild.roles.find('name', 'X X');
+      			let role2 = message.guild.roles.find('name', 'X X');
       			//message.channel.send("hi");
      		 	//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
-      			target.setRoles([role.id])
+      			target.setRoles([role2.id])
 	      		.then(message.channel.send(target + ' you have been given your second strike!'))
 	      		.catch(console.error);
     		break;
     		case 3:
-      			let role = message.guild.roles.find('name', 'X X X');
+      			let role3 = message.guild.roles.find('name', 'X X X');
       			//message.channel.send("hi");
       			//message.channel.send(target + ' ' + srole + ' ' + role + ' ' + reason);  
-      			target.setRoles([role.id])
+      			target.setRoles([role3.id])
 	      		.then(message.channel.send(target + ' you have been given your third strike!'))
 	      		.catch(console.error);
 			await target.ban()

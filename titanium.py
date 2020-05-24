@@ -12,7 +12,7 @@ client = commands.Bot(command_prefix = 'X:')
 @client.event
 async def on_ready():
     print('Titanium is available!')
-    await client.change_presence(game=discord.Game(name='Serving X3MIS',type=1))
+    await client.change_presence(activity='Serving X3MIS')
     await client.join_voice_channel(discord.utils.find(lambda c: c.name == 'titanium' and c.type == 'voice', some_list_of_channels))
 
 client.run(os.environ["BOT_TOKEN"])

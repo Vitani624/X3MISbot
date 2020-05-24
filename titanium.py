@@ -11,7 +11,7 @@ client = commands.Bot(command_prefix = 'X:')
 
 @client.event
 async def on_ready():
-print('Titanium is available!')
+    print('Titanium is available!')
 
 client.run('os.environ["BOT_TOKEN"]')
 
@@ -20,7 +20,7 @@ def listen():
     with sr.Microphone() as source:
         print("listening...")
         audio = r.listen(source)
-    data = ""
+        data = ""
     try:
         data = r.recognize_google(audio)
         print("You said: " + data)

@@ -1,1 +1,1 @@
-worker: titanium.py
+worker: python titanium.py

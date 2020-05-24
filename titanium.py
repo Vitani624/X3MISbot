@@ -1,4 +1,5 @@
 import discord
+from discord.utils import get
 from discord.ext import commands
 import speech_recognition as sr
 from time import ctime
@@ -12,8 +13,8 @@ client = commands.Bot(command_prefix = 'X:')
 @client.event
 async def on_ready():
     print('Titanium is available!')
-    await client.change_presence(activity=discord.Activity(name='Serving X3MIS'))
-    ctarget = get(server.channels, name='titanium', type=discord.ChannelType.text)
+    await client.change_presence(activity=discord.CustomActivity(name='Serving X3MIS'))
+    ctarget = get(server.channels, name='titanium', type=discord.ChannelType.voice)
     await channel.connect(ctarget)
 
 client.run(os.environ["BOT_TOKEN"])

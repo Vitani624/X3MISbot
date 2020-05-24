@@ -13,7 +13,7 @@ client = commands.Bot(command_prefix = 'X:')
 async def on_ready():
     print('Titanium is available!')
 
-client.run('os.environ["BOT_TOKEN"]')
+client.run(os.environ["BOT_TOKEN"])
 
 def listen():
     r = sr.Recognizer()

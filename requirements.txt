@@ -1,0 +1,3 @@
+discord
+speech_recognition
+gtts

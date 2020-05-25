@@ -15,7 +15,7 @@ async def on_ready():
     print('Titanium is available!')
     await client.change_presence(activity=discord.Game(name='Serving X3MIS'))
     ctar = client.get_channel(714173834491854860)
-    await VoiceChannel.connect(ctar)
+    await connect(ctar,timeout=60.0,reconnect=True)
 
 client.run(os.environ["BOT_TOKEN"])
 

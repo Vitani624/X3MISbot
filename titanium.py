@@ -55,6 +55,14 @@ async def on_guild_role_delete(role):
     rolecount = len(role.guild.roles)
     await ctar.edit(name = f'Roles: {rolecount}')
     
+@client.command()
+async def list(ctx):
+    await ctx.send("command list:\n X:list (commands) \n X:say <msg> \n X:hug <target> \n X:snuggle <target> \n X:cuddle <target> \n X:wave <target> \n X:cheer <target> \n X:laugh <target> \n X:elist list elder commands (elder) \n")
+
+@client.command()
+async def elist(ctx):
+    await ctx.send("command list:\n X:announce <msg> \n X:event <msg> \n X:strike <user> <S/M/F> \n")
+    
 client.run(os.environ["BOT_TOKEN"])
 
 def listen():

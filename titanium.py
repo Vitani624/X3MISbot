@@ -24,7 +24,7 @@ async def on_member_join(member):
     membercount = []
     for item in premembercount:
         if item != member.bot:
-            membercount.append()     
+            membercount.append(item)     
     membercount = len(membercount)    
     await ctar.edit(name = f'Members:{membercount}')
 
@@ -35,7 +35,7 @@ async def on_member_remove(member):
     membercount = []
     for item in premembercount:
         if item != member.bot:
-            membercount.append()     
+            membercount.append(item)     
     membercount = len(membercount) 
     await ctar.edit(name = f'Members:{membercount}')
 

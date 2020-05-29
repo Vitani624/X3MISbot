@@ -20,13 +20,13 @@ async def on_ready():
 @client.event
 async def on_member_join():
     ctar = client.get_channel(561044806919520256)
-    membercount = return member not member.bot
+    membercount = return ctar.guild.members not member.bot
     await client.edit_channel(ctar, "Members: " + membercount)
 
 @client.event
 async def on_member_remove():
     ctar = client.get_channel(561044806919520256)
-    membercount = return member not member.bot
+    membercount = return ctar.guild.members not member.bot
     await client.edit_channel(ctar, "Members: " + membercount)
 
 @client.event

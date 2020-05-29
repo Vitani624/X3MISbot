@@ -23,10 +23,10 @@ async def on_member_join(member):
     premembercount = member.guild.members
     membercount = []
     for item in premembercount:
-        if item != member.bot:
+        if item == member.bot:
             membercount.append(item)     
-    membercount = len(membercount)    
-    await ctar.edit(name = f'Members:{membercount}')
+    membercount = len(premembercount) - len(membercount)    
+    await ctar.edit(name = f'Members: {membercount}')
 
 @client.event
 async def on_member_remove(member):
@@ -34,34 +34,34 @@ async def on_member_remove(member):
     premembercount = member.guild.members
     membercount = []
     for item in premembercount:
-        if item != member.bot:
+        if item == member.bot:
             membercount.append(item)     
-    membercount = len(membercount) 
-    await ctar.edit(name = f'Members:{membercount}')
+    membercount = len(premembercount) - len(membercount)  
+    await ctar.edit(name = f'Members: {membercount}')
 
 @client.event
 async def on_guild_channel_create(channel):
     ctar = client.get_channel(561042915011592222)
     channelcount = len(channel.guild.channels)
-    await ctar.edit(name = f'Channels:{channelcount}')
+    await ctar.edit(name = f'Channels: {channelcount}')
 
 @client.event
 async def on_guild_channel_delete(channel):
     ctar = client.get_channel(561042915011592222)
     channelcount = len(channel.guild.channels)
-    await ctar.edit(name = f'Channels:{channelcount}')
+    await ctar.edit(name = f'Channels: {channelcount}')
     
 @client.event
 async def on_guild_role_create(role):
     ctar = client.get_channel(561042914302754838)
-    rolecount = role.guild.roles
-    await ctar.edit(name = f'Roles:{rolecount}')
+    rolecount = len(role.guild.roles)
+    await ctar.edit(name = f'Roles: {rolecount}')
     
 @client.event
 async def on_guild_role_delete(role):
     ctar = client.get_channel(561042914302754838)
-    rolecount = role.guild.roles
-    await ctar.edit(name = f'Roles:{rolecount}')
+    rolecount = len(role.guild.roles)
+    await ctar.edit(name = f'Roles: {rolecount}')
     
 client.run(os.environ["BOT_TOKEN"])
 

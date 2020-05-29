@@ -11,6 +11,12 @@ import requests, json
 client = commands.Bot(command_prefix = 'X:')
 
 @client.event
+async def on_message(message):
+    if not (message.author).bot:
+        await test_bot.delete_message(message)
+    await test_bot.process_commands(message)
+
+@client.event
 async def on_ready():
     print('Titanium is available!')
     await client.change_presence(activity=discord.CustomActivity(name='Serving X3MIS'))
@@ -65,11 +71,11 @@ async def elist(ctx):
     
 @client.command()
 async def announce(ctx, *, message):
-    await ctx.send(f'@Notifications **{message}**');
+    await ctx.send("@Notifications " + f'**{message}**')
     
 @client.command()
 async def event(ctx, *, message):
-    await ctx.send(f'@Events **{message}**');
+    await ctx.send("@Events " + f'**{message}**')
     
 client.run(os.environ["BOT_TOKEN"])
 

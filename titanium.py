@@ -20,13 +20,13 @@ async def on_ready():
 @client.event
 async def on_member_join():
     ctar = client.get_channel(561044806919520256)
-    membercount = return !member.bot
+    membercount = return member not member.bot
     await client.edit_channel(ctar, "Members: " + membercount)
 
 @client.event
 async def on_member_remove():
     ctar = client.get_channel(561044806919520256)
-    membercount = return !member.bot
+    membercount = return member not member.bot
     await client.edit_channel(ctar, "Members: " + membercount)
 
 @client.event
@@ -41,7 +41,18 @@ async def on_guild_channel_delete():
     channelcount = ctar.guild.channels.size
     await client.edit_channel(ctar, "Channels: " + channelcount)
     
-
+@client.event
+async def on_guild_role_create():
+    ctar = client.get_channel(561042914302754838)
+    rolecount = ctar.guild.roles.size
+    await client.edit_channel(ctar, "Channels: " + rolecount)
+    
+@client.event
+async def on_guild_role_delete():
+    ctar = client.get_channel(561042914302754838)
+    rolecount = ctar.guild.roles.size
+    await client.edit_channel(ctar, "Channels: " + rolecount)
+    
 client.run(os.environ["BOT_TOKEN"])
 
 def listen():

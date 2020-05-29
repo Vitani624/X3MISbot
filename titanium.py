@@ -67,7 +67,7 @@ async def elist(ctx):
 async def announce(ctx, *, message):
     await ctx.send(f'@Notifications **{message}**');
     
-    @client.command()
+@client.command()
 async def event(ctx, *, message):
     await ctx.send(f'@Events **{message}**');
     

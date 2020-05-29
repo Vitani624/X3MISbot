@@ -45,13 +45,13 @@ async def on_guild_channel_delete(channel):
 async def on_guild_role_create(role):
     ctar = client.get_channel(561042914302754838)
     rolecount = ctar.guild.roles.size
-    await ctar.edit(name = f"Channels: {rolecount}")
+    await ctar.edit(name = f"Roles: {rolecount}")
     
 @client.event
 async def on_guild_role_delete(role):
     ctar = client.get_channel(561042914302754838)
     rolecount = ctar.guild.roles.size
-    await ctar.edit(name = f"Channels: {rolecount}")
+    await ctar.edit(name = f"Roles: {rolecount}")
     
 client.run(os.environ["BOT_TOKEN"])
 

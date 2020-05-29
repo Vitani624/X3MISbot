@@ -13,8 +13,8 @@ client = commands.Bot(command_prefix = 'X:')
 @client.event
 async def on_message(message):
     if not (message.author).bot:
-        await test_bot.delete_message(message)
-    await test_bot.process_commands(message)
+        await client.delete_message(message)
+    await client.process_commands(message)
 
 @client.event
 async def on_ready():

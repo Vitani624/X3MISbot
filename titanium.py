@@ -16,6 +16,31 @@ async def on_ready():
     await client.change_presence(activity=discord.Game(name='Serving X3MIS'))
     ctar = client.get_channel(714173834491854860)
     await ctar.connect()
+    
+@client.event
+async def on_member_join():
+    ctar = client.get_channel(561044806919520256)
+    membercount = return !member.bot
+    await client.edit_channel(ctar, "Members: " + membercount)
+
+@client.event
+async def on_member_remove():
+    ctar = client.get_channel(561044806919520256)
+    membercount = return !member.bot
+    await client.edit_channel(ctar, "Members: " + membercount)
+
+@client.event
+async def on_guild_channel_create():
+    ctar = client.get_channel(561042915011592222)
+    channelcount = ctar.guild.channels.size
+    await client.edit_channel(ctar, "Channels: " + channelcount)
+
+@client.event
+async def on_guild_channel_delete():
+    ctar = client.get_channel(561042915011592222)
+    channelcount = ctar.guild.channels.size
+    await client.edit_channel(ctar, "Channels: " + channelcount)
+    
 
 client.run(os.environ["BOT_TOKEN"])
 

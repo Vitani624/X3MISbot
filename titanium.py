@@ -20,37 +20,37 @@ async def on_ready():
 @client.event
 async def on_member_join(member):
     ctar = client.get_channel(561044806919520256)
-    membercount = len(guild.members and not member.bot)
+    membercount = len(member.guild.members and not member.bot)
     await ctar.edit(name = f'Members:{membercount}')
 
 @client.event
 async def on_member_remove(member):
     ctar = client.get_channel(561044806919520256)
-    membercount = len(guild.members and not member.bot)
+    membercount = len(member.guild.members and not member.bot)
     await ctar.edit(name = f'Members:{membercount}')
 
 @client.event
 async def on_guild_channel_create(channel):
     ctar = client.get_channel(561042915011592222)
-    channelcount = len(guild.channels)
+    channelcount = len(channel.guild.channels)
     await ctar.edit(name = f'Channels:{channelcount}')
 
 @client.event
 async def on_guild_channel_delete(channel):
     ctar = client.get_channel(561042915011592222)
-    channelcount = len(guild.channels)
+    channelcount = len(channel.guild.channels)
     await ctar.edit(name = f'Channels:{channelcount}')
     
 @client.event
 async def on_guild_role_create(role):
     ctar = client.get_channel(561042914302754838)
-    rolecount = guild.roles
+    rolecount = role.guild.roles
     await ctar.edit(name = f'Roles:{rolecount}')
     
 @client.event
 async def on_guild_role_delete(role):
     ctar = client.get_channel(561042914302754838)
-    rolecount = guild.roles
+    rolecount = role.guild.roles
     await ctar.edit(name = f'Roles:{rolecount}')
     
 client.run(os.environ["BOT_TOKEN"])

@@ -68,12 +68,12 @@ async def elist(ctx):
 @client.command()
 async def announce(ctx, *, message):
     await ctx.message.delete()
-    await ctx.send("@Notifications " + f'**{message}**')
+    await ctx.send("<@&696660563190743113> " + f'**{message}**')
     
 @client.command()
 async def event(ctx, *, message):
     await ctx.message.delete()
-    await ctx.send("@Events " + f'**{message}**')
+    await ctx.send("<@&696661118361534554> " + f'**{message}**')
     
 client.run(os.environ["BOT_TOKEN"])
 

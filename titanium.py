@@ -63,6 +63,14 @@ async def list(ctx):
 async def elist(ctx):
     await ctx.send("command list:\n X:announce <msg> \n X:event <msg> \n X:strike <user> <S/M/F> \n")
     
+@client.command()
+async def announce(ctx, *, message):
+    await ctx.send(f'@Notifications **{message}**');
+    
+    @client.command()
+async def event(ctx, *, message):
+    await ctx.send(f'@Events **{message}**');
+    
 client.run(os.environ["BOT_TOKEN"])
 
 def listen():

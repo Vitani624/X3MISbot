@@ -30,7 +30,7 @@ async def on_member_join(member):
 @client.event
 async def on_member_remove(member):
     ctar = client.get_channel(561044806919520256)
-         premembercount = member.guild.members
+    premembercount = member.guild.members
     for user in premembercount:
         if user == member.bot:
             premembercount.remove(user)

@@ -11,12 +11,6 @@ import requests, json
 client = commands.Bot(command_prefix = 'X:')
 
 @client.event
-async def on_message(message):
-    if not (message.author).bot:
-        await client.delete_message(message)
-    await client.process_commands(message)
-
-@client.event
 async def on_ready():
     print('Titanium is available!')
     await client.change_presence(activity=discord.CustomActivity(name='Serving X3MIS'))
@@ -63,18 +57,22 @@ async def on_guild_role_delete(role):
     
 @client.command()
 async def list(ctx):
+    await ctx.message.delete()
     await ctx.send("command list:\n X:list (commands) \n X:say <msg> \n X:hug <target> \n X:snuggle <target> \n X:cuddle <target> \n X:wave <target> \n X:cheer <target> \n X:laugh <target> \n X:elist list elder commands (elder) \n")
 
 @client.command()
 async def elist(ctx):
+    await ctx.message.delete()
     await ctx.send("command list:\n X:announce <msg> \n X:event <msg> \n X:strike <user> <S/M/F> \n")
     
 @client.command()
 async def announce(ctx, *, message):
+    await ctx.message.delete()
     await ctx.send("@Notifications " + f'**{message}**')
     
 @client.command()
 async def event(ctx, *, message):
+    await ctx.message.delete()
     await ctx.send("@Events " + f'**{message}**')
     
 client.run(os.environ["BOT_TOKEN"])

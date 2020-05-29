@@ -22,8 +22,9 @@ async def on_member_join(member):
     ctar = client.get_channel(561044806919520256)
     premembercount = member.guild.members
     membercount = []
-    for premembercount if not member.bot:
-        membercount.append()
+    for item in premembercount:
+        if item != member.bot:
+            membercount.append()     
     membercount = len(membercount)    
     await ctar.edit(name = f'Members:{membercount}')
 
@@ -32,9 +33,10 @@ async def on_member_remove(member):
     ctar = client.get_channel(561044806919520256)
     premembercount = member.guild.members
     membercount = []
-    for premembercount if not member.bot:
-        membercount.append()   
-    membercount = len(membercount)    
+    for item in premembercount:
+        if item != member.bot:
+            membercount.append()     
+    membercount = len(membercount) 
     await ctar.edit(name = f'Members:{membercount}')
 
 @client.event
